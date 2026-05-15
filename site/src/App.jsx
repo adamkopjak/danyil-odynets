@@ -9,7 +9,7 @@ const PALMARES = [
 ]
 
 const GOALS = [
-  { n: '01', sub: 'Licence', title: <>Obtain a <em>professional</em> licence.</> },
+  { n: '01', sub: 'Licence', title: <>Get a good result among the <em>professional</em> category.</> },
   { n: '02', sub: 'Time barrier', title: <>Complete an Ironman in <em>under 8 hours</em>.</> },
   { n: '03', sub: 'World Championship', title: <>Qualify as a Pro for the <em>Ironman World Championship</em>, Hawaii.</> },
   { n: '04', sub: 'New format', title: <>Enter the new <em>T100</em> series.</> },
@@ -87,17 +87,31 @@ function useReveal() {
   }, [])
 }
 
+function usePalette() {
+  const [palette, setPalette] = useState(() => {
+    if (typeof window === 'undefined') return 'rust'
+    return localStorage.getItem('palette') || 'rust'
+  })
+  useEffect(() => {
+    document.documentElement.setAttribute('data-palette', palette)
+    localStorage.setItem('palette', palette)
+  }, [palette])
+  return [palette, setPalette]
+}
+
 export default function App() {
   const clock = useClock()
   useReveal()
+  const [palette, setPalette] = usePalette()
+  const isLight = palette === 'cream'
+  const toggle = () => setPalette(isLight ? 'rust' : 'cream')
 
   return (
     <>
       <header className="topbar">
         <div className="brand">
-          <span className="dot"></span>
-          <span>Danyil Odynets · SV Gallneukirchen</span>
-          <span className="live">— On the road to Pro</span>
+          <span>Danyil Odynets · PEWAG RACING</span>
+          <span className="live">Professional athlete</span>
         </div>
         <nav className="nav">
           <a href="#about">About</a>
@@ -110,6 +124,9 @@ export default function App() {
         <div className="meta-right">
           <span><b>{clock}</b> &nbsp;LINZ · AT</span>
           <span>U24 · World Champion · 2025</span>
+          <button className="theme-toggle" onClick={toggle} aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'} title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}>
+            {isLight ? '☾' : '☀'}
+          </button>
         </div>
       </header>
 
@@ -132,7 +149,7 @@ export default function App() {
 
             <div className="hero-row">
               <div className="hero-tag">
-                <span className="role">Ironman triathlete &nbsp;·&nbsp; <b>UKR → AT</b> &nbsp;·&nbsp; age 21</span>
+                <span className="role">Ironman triathlete &nbsp;·&nbsp; <b>UKR → AT</b> &nbsp;·&nbsp; age 22</span>
                 <p className="blurb">Reigning <em>U24 Ironman World Champion</em>. Three years ago I left Kyiv with a backpack — today I'm racing to make the jump from young talent to the international pro elite.</p>
               </div>
               <div></div>
@@ -165,7 +182,7 @@ export default function App() {
         <section className="partners-wrap" aria-label="Current partners">
           <div className="partners-head">
             <span className="ttl">Current partners <b>— 2026</b></span>
-            <span className="tag">Triathlon Section · SV Gallneukirchen</span>
+            <span className="tag">Triathlon Section · PEWAG RACING</span>
           </div>
           <div className="partners">
             {PARTNERS.map((p) => (
@@ -187,9 +204,9 @@ export default function App() {
           <div className="about-grid reveal">
             <div className="label">Bio<br /><span style={{ color: 'var(--fg-mute)' }}>b. 2004 — Kyiv, UA</span></div>
             <div className="copy">
-              <p>I am Danyil Odynets, 21 years old. I fled Ukraine three years ago and am the reigning <em>U24 Ironman World Champion</em>.</p>
+              <p>I am Danyil Odynets, 22 years old. I fled Ukraine three years ago and am the reigning <em>U24 Ironman World Champion</em>.</p>
               <p>My journey out of Kyiv ran alone through Moldova, Romania, and Hungary. Along the way I volunteered translating and finding housing for other refugees. Eventually JKU Linz offered me a study place, a scholarship, and a roof — and that's where the next life started.</p>
-              <p>I am studying International Business Administration at JKU Linz, close to finishing my Bachelor's. I race for SV Gallneukirchen — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
+              <p>I am studying International Business Administration at JKU Linz, close to finishing my Bachelor's. I race for PEWAG RACING — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
             </div>
             <div className="portrait" aria-label="Portrait">
               <img src="/assets/img-l.jpg" alt="Danyil Odynets portrait" />
@@ -374,7 +391,7 @@ export default function App() {
           </div>
           <div className="col">
             <h4>Affiliations</h4>
-            <p>SV Gallneukirchen<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>TRIATHLON SECTION</span></p>
+            <p>PEWAG RACING<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>TRIATHLON SECTION</span></p>
             <p>JKU Linz<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>INT. BUSINESS ADMIN. (BSc)</span></p>
           </div>
 

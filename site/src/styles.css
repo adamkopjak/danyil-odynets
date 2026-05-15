@@ -1388,16 +1388,21 @@ html[data-italic-name="true"] .hero-title .ln-2 { font-style: italic; }
 .partners .slot:hover { background: color-mix(in oklab, var(--accent) 6%, transparent); }
 .partners .slot:hover::before,
 .partners .slot:hover::after { color: var(--accent); }
+.partners .slot:hover { background: color-mix(in oklab, var(--accent) 8%, transparent); }
 .partners .slot img {
   max-width: 80%;
   max-height: 60%;
   width: auto; height: auto;
   object-fit: contain;
-  transition: transform .25s, opacity .25s, filter .25s;
+  transition: transform .25s, filter .25s;
   opacity: 1;
   filter: brightness(0) invert(1);
 }
 .partners .slot:hover img { transform: scale(1.04); filter: brightness(0) invert(1) drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 60%, transparent)); }
+
+/* light-mode: black logos on light background */
+html[data-palette="cream"] .partners .slot img { filter: brightness(0); }
+html[data-palette="cream"] .partners .slot:hover img { filter: brightness(0) drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 60%, transparent)); }
 
 /* per-logo size balancing (the logos have wildly different proportions) */
 .partners .l-pewag    img { max-height: 80%; max-width: 72%; }
@@ -1637,6 +1642,36 @@ html[data-italic-name="true"] .hero-title .ln-2 { font-style: italic; }
 /* ----- reveal animation ----- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
 .reveal.in { opacity: 1; transform: none; }
+
+/* ----- theme toggle ----- */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--fg) 30%, transparent);
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+  font-family: var(--mono);
+  padding: 0;
+}
+.theme-toggle:hover {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+  transform: rotate(20deg);
+}
+
+/* ----- light-mode adaptations ----- */
+html[data-palette="cream"] .marquee { color: var(--fg); background: color-mix(in oklab, var(--bg) 70%, transparent); }
+html[data-palette="cream"] .marquee span { color: var(--fg); }
+html[data-palette="cream"] .hero-img { filter: brightness(0.92); }
 
 /* ----- tweaks panel host ----- */
 #tweaks-root { position: fixed; right: 0; top: 0; z-index: 100; }
