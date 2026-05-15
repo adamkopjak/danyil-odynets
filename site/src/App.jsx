@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 const PALMARES = [
   { year: "'26", race: <>Challenge <em>Salou</em></>, loc: 'Salou · Spain · 10 May 2026', time: '03:56:00', place: '—', small: 'HALF DISTANCE' },
+  { year: "'26", race: <>Austrian National <em>Duathlon</em> Championship</>, loc: 'Maissau · Austria', time: '—', place: '5', small: 'NATIONAL CHAMPS' },
   { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:42', place: '1', small: 'U24 / 10TH AG' },
   { year: "'25", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany · 29 Jun 2025', time: '08:34:49', place: '1', small: 'U24 / 3RD AG' },
   { year: "'25", race: <>Challenge <em>St. Pölten</em></>, loc: 'St. Pölten · Austria · 25 May 2025', time: '04:12:31', place: '2', small: 'U24 / 4TH AG' },
