@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 
 const PALMARES = [
-  { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:00', place: '1', small: 'U24 / 10TH AG' },
-  { year: "'25", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany', time: '08:34:00', place: '1', small: 'U24 / 3RD AG' },
-  { year: "'25", race: <>Challenge <em>St. Pölten</em></>, loc: 'St. Pölten · Austria', time: '04:12:00', place: '2', small: 'U24 / 4TH AG' },
+  { year: "'26", race: <>Challenge <em>Salou</em></>, loc: 'Salou · Spain · 10 May 2026', time: '03:56:00', place: '—', small: 'HALF DISTANCE' },
+  { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:42', place: '1', small: 'U24 / 10TH AG' },
+  { year: "'25", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany · 29 Jun 2025', time: '08:34:49', place: '1', small: 'U24 / 3RD AG' },
+  { year: "'25", race: <>Challenge <em>St. Pölten</em></>, loc: 'St. Pölten · Austria · 25 May 2025', time: '04:12:31', place: '2', small: 'U24 / 4TH AG' },
   { year: "'24", race: <>Ironman <em>Klagenfurt</em></>, loc: 'Klagenfurt · Austria', time: '09:07:00', place: '3', small: 'U24 / 26TH AG' },
   { year: "'23", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France', time: '10:10:00', place: '12', small: 'U24 / 61ST AG' },
 ]
 
 const GOALS = [
-  { n: '01', sub: 'Licence', title: <>Get a good result among the <em>professional</em> category.</> },
+  { n: '01', sub: 'Results', title: <>Get a good result among the <em>professional</em> category.</> },
   { n: '02', sub: 'Time barrier', title: <>Complete an Ironman in <em>under 8 hours</em>.</> },
   { n: '03', sub: 'World Championship', title: <>Qualify as a Pro for the <em>Ironman World Championship</em>, Hawaii.</> },
   { n: '04', sub: 'New format', title: <>Enter the new <em>T100</em> series.</> },
@@ -50,11 +51,14 @@ const GALLERY = [
 ]
 
 const FUNDING = [
-  { n: '01', label: 'Bike & equipment', amt: '€15,000', w: '50%' },
-  { n: '02', label: 'Training camps & races', amt: '€8,500', w: '28%' },
-  { n: '03', label: 'Diagnostics & medical', amt: '€3,500', w: '12%' },
-  { n: '04', label: 'Swimming', amt: '€1,600', w: '6%' },
-  { n: '05', label: 'Shoes & running gear', amt: '€1,250', w: '4%' },
+  { n: '01', label: 'Bike', amt: '€15,000', w: '100%' },
+  { n: '02', label: 'Accommodation', amt: '€9,000', w: '60%', sub: '€750 / mo' },
+  { n: '03', label: 'Training camps & races', amt: '€8,500', w: '57%' },
+  { n: '04', label: 'Equipment modification & testing', amt: '€7,000', w: '47%' },
+  { n: '05', label: 'Food', amt: '€6,000', w: '40%', sub: '€500 / mo' },
+  { n: '06', label: 'Diagnostics & medical', amt: '€3,500', w: '23%' },
+  { n: '07', label: 'Swimming', amt: '€1,600', w: '11%' },
+  { n: '08', label: 'Shoes & running gear', amt: '€1,250', w: '8%' },
 ]
 
 function useClock() {
@@ -110,7 +114,7 @@ export default function App() {
     <>
       <header className="topbar">
         <div className="brand">
-          <span>Danyil Odynets · PEWAG RACING</span>
+          <span>Danyil Odynets · PEWAG RACING TEAM</span>
           <span className="live">Professional athlete</span>
         </div>
         <nav className="nav">
@@ -182,7 +186,7 @@ export default function App() {
         <section className="partners-wrap" aria-label="Current partners">
           <div className="partners-head">
             <span className="ttl">Current partners <b>— 2026</b></span>
-            <span className="tag">Triathlon Section · PEWAG RACING</span>
+            <span className="tag">Triathlon Section · PEWAG RACING TEAM</span>
           </div>
           <div className="partners">
             {PARTNERS.map((p) => (
@@ -206,7 +210,7 @@ export default function App() {
             <div className="copy">
               <p>I am Danyil Odynets, 22 years old. I fled Ukraine three years ago and am the reigning <em>U24 Ironman World Champion</em>.</p>
               <p>My journey out of Kyiv ran alone through Moldova, Romania, and Hungary. Along the way I volunteered translating and finding housing for other refugees. Eventually JKU Linz offered me a study place, a scholarship, and a roof — and that's where the next life started.</p>
-              <p>I am studying International Business Administration at JKU Linz, close to finishing my Bachelor's. I race for PEWAG RACING — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
+              <p>I am studying International Business Administration at JKU Linz, close to finishing my Bachelor's. I race for PEWAG RACING TEAM — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
             </div>
             <div className="portrait" aria-label="Portrait">
               <img src="/assets/img-l.jpg" alt="Danyil Odynets portrait" />
@@ -347,7 +351,7 @@ export default function App() {
 
           <div className="funding reveal">
             <div className="pitch-side">
-              <p>As a student, I have financed my sport myself — through scholarships and shifts at a running store in Linz. To take the next step toward a <em>pro licence</em>, I need partners.</p>
+              <p>As a student, I have financed my sport myself — through scholarships and shifts at a running store in Linz. For financial stability as a <em>pro</em> I need partners.</p>
               <p className="smalls">Your sponsorship is more than an investment in athletic success — it is a commitment to dedication, internationality, and future vision. As a partner you receive an exclusive relationship with a rising pro, social-media presence, and inclusion in corporate events: health days, team-building, panels, expo appearances.</p>
               <a className="cta" href="mailto:danilodynets@gmail.com?subject=Partnership%20—%20Danyil%20Odynets">
                 Become a partner
@@ -359,7 +363,7 @@ export default function App() {
               {FUNDING.map((f) => (
                 <div key={f.n} className="line" style={{ '--w': f.w }}>
                   <span className="n">{f.n}</span>
-                  <span className="label">{f.label}</span>
+                  <span className="label">{f.label}{f.sub && <span className="line-sub"> · {f.sub}</span>}</span>
                   <span className="bar"></span>
                   <span className="amt">{f.amt}</span>
                 </div>
@@ -368,7 +372,7 @@ export default function App() {
                 <span className="n">Σ</span>
                 <span className="label">Annual <em>budget</em></span>
                 <span></span>
-                <span className="amt">€29,850</span>
+                <span className="amt">€51,850</span>
               </div>
             </div>
           </div>
@@ -391,8 +395,8 @@ export default function App() {
           </div>
           <div className="col">
             <h4>Affiliations</h4>
-            <p>PEWAG RACING<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>TRIATHLON SECTION</span></p>
-            <p>JKU Linz<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>INT. BUSINESS ADMIN. (BSc)</span></p>
+            <p>PEWAG RACING TEAM<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>TRIATHLON SECTION</span></p>
+            <p>JKU Linz<br /><span className="mono" style={{ color: 'var(--fg-mute)', fontSize: 11 }}>STRATEGIC MANAGEMENT. (MSc)</span></p>
           </div>
 
           <div className="bottom">
