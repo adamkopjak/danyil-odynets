@@ -132,7 +132,7 @@ export default function App() {
 
             <div className="hero-row">
               <div className="hero-tag">
-                <span className="role">Ironman triathlete &nbsp;·&nbsp; <b>UKR → AUT</b> &nbsp;·&nbsp; age 21</span>
+                <span className="role">Ironman triathlete &nbsp;·&nbsp; <b>UKR → AT</b> &nbsp;·&nbsp; age 21</span>
                 <p className="blurb">Reigning <em>U24 Ironman World Champion</em>. Three years ago I left Kyiv with a backpack — today I'm racing to make the jump from young talent to the international pro elite.</p>
               </div>
               <div></div>
@@ -313,7 +313,7 @@ export default function App() {
         <hr className="rule" />
 
         <div className="bleed reveal" aria-hidden="true">
-          <img src="/assets/challenge-salou.jpg" alt="Race day at Challenge Salou" />
+          <img src="/assets/challenge-salou.jpg" alt="Race day at Challenge Salou" style={{ objectPosition: 'center',  opacity: 0.7 }} />
           <div className="bleed-label">
             <span className="bleed-quote">From a backpack and a border crossing to <em>start lines</em> across Europe.</span>
             <span>SALOU · ES &nbsp;·&nbsp; RACE DAY</span>
