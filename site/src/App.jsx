@@ -211,7 +211,7 @@ export default function App() {
             <div className="copy">
               <p>I am Danyil Odynets, 22 years old. I fled Ukraine three years ago and am the reigning <em>U24 Ironman World Champion</em>.</p>
               <p>My journey out of Kyiv ran alone through Moldova, Romania, and Hungary. Along the way I volunteered translating and finding housing for other refugees. Eventually JKU Linz offered me a study place, a scholarship, and a roof — and that's where the next life started.</p>
-              <p>I am studying International Business Administration at JKU Linz, close to finishing my Bachelor's. I race for PEWAG RACING TEAM — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
+              <p>I am studying Strategic Management at JKU Linz, close to finishing my Master's. I race for PEWAG RACING TEAM — Triathlon Section, and I'm at the turning point from <em>young talent</em> to international professional.</p>
             </div>
             <div className="portrait" aria-label="Portrait">
               <img src="/assets/img-l.jpg" alt="Danyil Odynets portrait" />

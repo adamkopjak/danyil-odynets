@@ -1621,10 +1621,16 @@ html[data-palette="cream"] .partners .slot:hover img { filter: brightness(0) dro
     padding: 14px 0;
   }
   .funding .totals .line .bar { display: none; }
+  .funding .totals .line.sum > span:empty { display: none; }
   .funding .totals .line .label { font-size: 17px; }
   .funding .totals .line .amt { font-size: 12px; min-width: 64px; }
-  .funding .totals .line.sum .label,
-  .funding .totals .line.sum .amt { font-size: 26px; }
+  .funding .totals .line.sum {
+    grid-template-columns: 22px 1fr auto;
+    align-items: baseline;
+    column-gap: 12px;
+  }
+  .funding .totals .line.sum .label { font-size: 22px; }
+  .funding .totals .line.sum .amt { font-size: 22px; min-width: 0; white-space: nowrap; }
   .funding .pitch-side p { font-size: 18px; }
   .cta { padding: 16px 20px; font-size: 11px; gap: 12px; }
 
