@@ -51,6 +51,13 @@ const GALLERY = [
   { extra: 'pos-upper', label: '13 — STORCK + ZEITJAEGER', frame: 'FRAME 13', src: '/assets/img-i.jpg', alt: 'Danyil with his bikes' },
 ]
 
+const CONTACT_TABS = [
+  { key: 'general', label: 'General inquiry', subject: 'General inquiry', placeholder: 'Hi Danyil, I wanted to reach out about…' },
+  { key: 'sponsorship', label: 'Sponsorship', subject: 'Partnership / Sponsorship', placeholder: 'Hi Danyil, our brand is interested in partnering for the 2026 season…' },
+  { key: 'press', label: 'Press / Media', subject: 'Press / Media request', placeholder: 'Hi Danyil, I\'m writing for [outlet] and would love to set up an interview…' },
+  { key: 'appearance', label: 'Speaking / Event', subject: 'Speaking / Event request', placeholder: 'Hi Danyil, we\'d like to invite you to speak at…' },
+]
+
 const FUNDING = [
   { n: '01', label: 'Bike', amt: '€15,000', w: '100%' },
   { n: '02', label: 'Accommodation', amt: '€9,000', w: '60%', sub: '€750 / mo' },
@@ -92,6 +99,79 @@ function useReveal() {
   }, [])
 }
 
+function ContactForm() {
+  const [tab, setTab] = useState('general')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [org, setOrg] = useState('')
+  const [message, setMessage] = useState('')
+  const active = CONTACT_TABS.find((t) => t.key === tab) || CONTACT_TABS[0]
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const subject = `[${active.subject}] ${name ? `from ${name}` : ''}`.trim()
+    const lines = [
+      name && `Name: ${name}`,
+      email && `Email: ${email}`,
+      org && `Organisation: ${org}`,
+      '',
+      message,
+    ].filter((l) => l !== undefined && l !== null).join('\n')
+    const mailto = `mailto:danilodynets@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`
+    window.location.href = mailto
+  }
+
+  return (
+    <section className="section" id="contact-form">
+      <div className="section-head reveal">
+        <span className="idx"><b>07</b> / Contact</span>
+        <h2 className="title">Get <em>in touch</em>.</h2>
+      </div>
+
+      <div className="contact-tabs reveal" role="tablist">
+        {CONTACT_TABS.map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            role="tab"
+            aria-selected={tab === t.key}
+            className={`contact-tab${tab === t.key ? ' active' : ''}`}
+            onClick={() => setTab(t.key)}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <form className="contact-form reveal" onSubmit={handleSubmit}>
+        <div className="field">
+          <label htmlFor="cf-name">Name</label>
+          <input id="cf-name" type="text" required value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-email">Email</label>
+          <input id="cf-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
+        </div>
+        <div className="field field-wide">
+          <label htmlFor="cf-org">Organisation / brand <span className="opt">— optional</span></label>
+          <input id="cf-org" type="text" value={org} onChange={(e) => setOrg(e.target.value)} autoComplete="organization" />
+        </div>
+        <div className="field field-wide">
+          <label htmlFor="cf-message">Message</label>
+          <textarea id="cf-message" rows="5" required value={message} onChange={(e) => setMessage(e.target.value)} placeholder={active.placeholder} />
+        </div>
+        <div className="field-wide contact-submit-row">
+          <button type="submit" className="cta">
+            Send message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <span className="contact-note mono">Opens your mail app · or write directly to <a href="mailto:danilodynets@gmail.com">danilodynets@gmail.com</a></span>
+        </div>
+      </form>
+    </section>
+  )
+}
+
 function usePalette() {
   const [palette, setPalette] = useState(() => {
     if (typeof window === 'undefined') return 'rust'
@@ -124,7 +204,7 @@ export default function App() {
           <a href="#goals">Goals</a>
           <a href="#gallery">Visuals</a>
           <a href="#sponsorship">Sponsorship</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact-form">Contact</a>
         </nav>
         <div className="meta-right">
           <span><b>{clock}</b> &nbsp;LINZ · AT</span>
@@ -378,6 +458,10 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        <hr className="rule" />
+
+        <ContactForm />
 
         <section className="foot shell" id="contact" style={{ maxWidth: 'none', paddingLeft: 'clamp(20px,4vw,56px)', paddingRight: 'clamp(20px,4vw,56px)' }}>
           <div className="sig reveal">

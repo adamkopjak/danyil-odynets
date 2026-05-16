@@ -1688,3 +1688,104 @@ html[data-palette="cream"] .hero-img { filter: brightness(0.92); }
 
 /* ----- tweaks panel host ----- */
 #tweaks-root { position: fixed; right: 0; top: 0; z-index: 100; }
+
+/* ----- contact form ----- */
+.contact-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.contact-tab {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--fg-dim);
+  cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s, transform .2s;
+  font-weight: 500;
+}
+.contact-tab:hover { color: var(--fg); border-color: color-mix(in oklab, var(--fg) 35%, transparent); }
+.contact-tab.active {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 32px;
+}
+.contact-form .field { display: flex; flex-direction: column; gap: 10px; }
+.contact-form .field-wide { grid-column: 1 / -1; }
+.contact-form label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.contact-form label .opt {
+  color: var(--fg-mute);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--display);
+  font-size: clamp(20px, 1.8vw, 26px);
+  color: var(--fg);
+  padding: 10px 0 12px;
+  outline: none;
+  transition: border-color .2s;
+  width: 100%;
+  resize: vertical;
+}
+.contact-form textarea {
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.4;
+  min-height: 120px;
+  font-family: var(--sans);
+}
+.contact-form textarea::placeholder,
+.contact-form input::placeholder {
+  color: var(--fg-mute);
+  font-style: italic;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.contact-submit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-top: 8px;
+}
+.contact-note {
+  color: var(--fg-mute);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.contact-note a { color: var(--fg-dim); border-bottom: 1px solid var(--rule); }
+.contact-note a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+@media (max-width: 720px) {
+  .contact-tabs { gap: 8px; margin-bottom: 28px; }
+  .contact-tab { padding: 10px 14px; font-size: 10px; }
+  .contact-form { grid-template-columns: 1fr; gap: 22px; }
+  .contact-form input { font-size: 18px; }
+  .contact-form textarea { font-size: 15px; }
+}
