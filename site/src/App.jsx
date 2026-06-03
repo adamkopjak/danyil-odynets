@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 
 const PALMARES = [
-  { year: "'26", race: <>Challenge <em>Salou</em></>, loc: 'Salou · Spain · 10 May 2026', time: '03:56:00', place: '—', small: 'HALF DISTANCE' },
+  { year: "'26", race: <>Challenge <em>Salou</em></>, loc: 'Salou · Spain · 10 May 2026', time: '03:56:00', place: '—', small: 'HALF DISTANCE', img: '/assets/finish-photos/salou.jpeg' },
   { year: "'26", race: <>Austrian National <em>Duathlon</em> Championship</>, loc: 'Maissau · Austria', time: '—', place: '5', small: 'NATIONAL CHAMPS' },
-  { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:42', place: '1', small: 'U24 / 10TH AG' },
-  { year: "'25", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany · 29 Jun 2025', time: '08:34:49', place: '1', small: 'U24 / 3RD AG' },
-  { year: "'25", race: <>Challenge <em>St. Pölten</em></>, loc: 'St. Pölten · Austria · 25 May 2025', time: '04:12:31', place: '2', small: 'U24 / 4TH AG' },
-  { year: "'24", race: <>Ironman <em>Klagenfurt</em></>, loc: 'Klagenfurt · Austria', time: '09:07:00', place: '3', small: 'U24 / 26TH AG' },
-  { year: "'23", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France', time: '10:10:00', place: '12', small: 'U24 / 61ST AG' },
+  { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:42', place: '1', small: 'U24 / 10TH AG', img: '/assets/gal-nice.jpg' },
+  { year: "'25", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany · 29 Jun 2025', time: '08:34:49', place: '1', small: 'U24 / 3RD AG', img: '/assets/finish-photos/frankfurt-2025.jpeg' },
+  { year: "'25", race: <>Challenge <em>St. Pölten</em></>, loc: 'St. Pölten · Austria · 25 May 2025', time: '04:12:31', place: '2', small: 'U24 / 4TH AG', img: '/assets/finish-photos/st-polten.jpeg' },
+  { year: "'24", race: <>Ironman European Championship <em>Frankfurt</em></>, loc: 'Frankfurt · Germany', time: '08:58:00', place: '—', small: 'U24 / EUROPEAN CH.', img: '/assets/finish-photos/frankfurt.jpeg' },
+  { year: "'24", race: <>Ironman <em>Klagenfurt</em></>, loc: 'Klagenfurt · Austria', time: '09:07:00', place: '3', small: 'U24 / 26TH AG', img: '/assets/finish-photos/klagenfurt.jpeg' },
+  { year: "'23", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France', time: '10:10:00', place: '12', small: 'U24 / 61ST AG', img: '/assets/finish-photos/nice-2023.jpeg' },
+  { year: "'22", race: <>Ironman <em>Barcelona</em></>, loc: 'Calella · Spain', time: '09:53:00', place: '—', small: 'IRONMAN DEBUT', img: '/assets/finish-photos/barcelona.jpeg' },
 ]
 
 const GOALS = [
@@ -336,12 +338,27 @@ export default function App() {
           </div>
           <div className="palmares reveal">
             {PALMARES.map((r, i) => (
-              <div key={i} className="row">
+              <div
+                key={i}
+                className={`row${r.img ? ' has-photo' : ''}`}
+                onMouseMove={r.img ? (e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  e.currentTarget.style.setProperty('--mx', `${x}px`)
+                  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+                  e.currentTarget.classList.toggle('flip', x > rect.width * 0.6)
+                } : undefined}
+              >
                 <div className="year">{r.year}</div>
                 <div className="race">{r.race}</div>
                 <div className="loc">{r.loc}</div>
                 <div className="time">{r.time}</div>
                 <div className="place">{r.place}<small>{r.small}</small></div>
+                {r.img && (
+                  <div className="row-photo" aria-hidden="true">
+                    <img src={r.img} alt="" loading="lazy" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
