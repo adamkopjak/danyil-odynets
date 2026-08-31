@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 
 const PALMARES = [
+  { year: "'26", race: <>Ironman <em>Kalmar</em></>, loc: 'Kalmar · Sweden · 15 Aug 2026', time: '08:20:00', place: '—', small: 'IRONMAN PB', img: '/assets/finish-photos/kalmar.jpeg', pos: 'center 20%' },
+  { year: "'26", race: <>Ironman <em>Klagenfurt</em></>, loc: 'Klagenfurt · Austria · 14 Jun 2026', time: '08:24:00', place: '—', small: 'FULL DISTANCE', img: '/assets/finish-photos/klagenfurt-2026.jpeg', pos: 'center 20%' },
   { year: "'26", race: <>Challenge <em>Salou</em></>, loc: 'Salou · Spain · 10 May 2026', time: '03:56:00', place: '—', small: 'HALF DISTANCE', img: '/assets/finish-photos/salou.jpeg' },
   { year: "'26", race: <>Austrian National <em>Duathlon</em> Championship</>, loc: 'Maissau · Austria', time: '—', place: '5', small: 'NATIONAL CHAMPS' },
   { year: "'25", race: <>Ironman World Championship <em>Nice</em></>, loc: 'Nice · France · U24 World Title', time: '09:09:42', place: '1', small: 'U24 / 10TH AG', img: '/assets/gal-nice.jpg' },
@@ -20,9 +22,9 @@ const GOALS = [
 ]
 
 const SEASON = [
-  { date: "Jun '26", block: 'BLOCK · A-RACE', name: <>Ironman <em>Klagenfurt</em></>, where: 'Klagenfurt · AT', dist: '3.8 — 180 — 42.2', pill: 'Confirmed', target: true },
+  { date: "Jun '26", block: 'A-RACE · RACED 14 JUN', name: <>Ironman <em>Klagenfurt</em></>, where: 'Klagenfurt · AT', dist: '3.8 — 180 — 42.2', pill: '8:24', target: false, done: true },
   { date: "Aug '26", block: 'SHARPEN', name: <>Ironman 70.3 <em>Gdynia</em></>, where: 'Gdynia · PL', dist: '1.9 — 90 — 21.1', pill: 'Probably', target: false },
-  { date: "Aug '26", block: 'A-RACE · SUB-8 ATTEMPT', name: <>Ironman <em>Kalmar</em></>, where: 'Kalmar · SE', dist: '3.8 — 180 — 42.2', pill: 'Confirmed', target: true },
+  { date: "Aug '26", block: 'A-RACE · RACED 15 AUG', name: <>Ironman <em>Kalmar</em></>, where: 'Kalmar · SE', dist: '3.8 — 180 — 42.2', pill: '8:20 · PB', target: false, done: true },
   { date: "Sep '26", block: 'BUILD', name: <>Challenge <em>Amsterdam</em></>, where: 'Amsterdam · NL', dist: '1.9 — 90 — 21.1', pill: 'Confirmed', target: true },
   { date: "Oct '26", block: 'SEASON CLOSER', name: <>Challenge <em>Barcelona</em></>, where: 'Calella · ES', dist: '3.8 — 180 — 42.2', pill: 'Confirmed', target: true },
 ]
@@ -243,7 +245,7 @@ export default function App() {
             </div>
 
             <div className="hero-stats">
-              <div><div className="k">Ironman PB</div><div className="v">8:34<sup>FRANKFURT '25</sup></div></div>
+              <div><div className="k">Ironman PB</div><div className="v">8:20<sup>KALMAR '26</sup></div></div>
               <div><div className="k">U24 World Title</div><div className="v">1<sup>NICE 2025</sup></div></div>
               <div><div className="k">U24 Euro Title</div><div className="v">1<sup>FRANKFURT '25</sup></div></div>
               <div><div className="k">2026 Target</div><div className="v">&lt;8h<sup>SUB-8 IRONMAN</sup></div></div>
@@ -356,7 +358,7 @@ export default function App() {
                 <div className="place">{r.place}<small>{r.small}</small></div>
                 {r.img && (
                   <div className="row-photo" aria-hidden="true">
-                    <img src={r.img} alt="" loading="lazy" />
+                    <img src={r.img} alt="" loading="lazy" style={r.pos ? { objectPosition: r.pos } : undefined} />
                   </div>
                 )}
               </div>
@@ -401,7 +403,7 @@ export default function App() {
                 <div className="name">{s.name}</div>
                 <div className="where">{s.where}</div>
                 <div className="dist">{s.dist}</div>
-                <div className={`pill${s.target ? ' target' : ''}`}>{s.pill}</div>
+                <div className={`pill${s.target ? ' target' : ''}${s.done ? ' done' : ''}`}>{s.pill}</div>
               </div>
             ))}
           </div>
@@ -503,7 +505,7 @@ export default function App() {
 
           <div className="bottom">
             <span>© 2026 Danyil Odynets — All rights reserved</span>
-            <span>Built for partnerships · Updated May 2026</span>
+            <span>Built for partnerships · Updated August 2026</span>
           </div>
         </section>
 
