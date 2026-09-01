@@ -25,7 +25,7 @@ const SEASON = [
   { date: "Jun '26", block: 'A-RACE · RACED 14 JUN', name: <>Ironman <em>Klagenfurt</em></>, where: 'Klagenfurt · AT', dist: '3.8 — 180 — 42.2', pill: '8:24', target: false, done: true },
   { date: "Aug '26", block: 'SHARPEN', name: <>Ironman 70.3 <em>Gdynia</em></>, where: 'Gdynia · PL', dist: '1.9 — 90 — 21.1', pill: 'Probably', target: false },
   { date: "Aug '26", block: 'A-RACE · RACED 15 AUG', name: <>Ironman <em>Kalmar</em></>, where: 'Kalmar · SE', dist: '3.8 — 180 — 42.2', pill: '8:20 · PB', target: false, done: true },
-  { date: "Sep '26", block: 'BUILD', name: <>Challenge <em>Amsterdam</em></>, where: 'Amsterdam · NL', dist: '1.9 — 90 — 21.1', pill: 'Confirmed', target: true },
+  { date: "Sep '26", block: 'BUILD', name: <>Challenge <em>Amsterdam</em></>, where: 'Amsterdam · NL', dist: '3.8 — 180 — 42.2', pill: 'Confirmed', target: true },
   { date: "Oct '26", block: 'SEASON CLOSER', name: <>Challenge <em>Barcelona</em></>, where: 'Calella · ES', dist: '3.8 — 180 — 42.2', pill: 'Confirmed', target: true },
 ]
 
